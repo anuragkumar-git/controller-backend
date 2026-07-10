@@ -167,14 +167,14 @@ def handle_key_down(data):
             # with gamepad_lock:
             # gamepad.press_button(button=BUTTON_MAP[key])
             gamepad.press_button(BUTTON_MAP[key])
-            logger.info(f"mapped button string: {key}")
+            # logger.info(f"mapped button string: {key}")
 
             # gamepad.update()
         elif key in COMBO_MAP:
             for button in COMBO_MAP[key]:
                 # gamepad.press_button(button=COMBO_MAP[key])
                 gamepad.press_button(button)
-                logger.info(f"two mapped button string: {button}")
+                # logger.info(f"two mapped button string: {button}")
         else:
             logger.warning(f"Unmapped button string: {key}")
         gamepad.update()
@@ -195,16 +195,16 @@ def handle_key_up(data):
         if key in BUTTON_MAP:
 
             gamepad.release_button(BUTTON_MAP[key])
-            logger.warning(f"mapped button string: {key}")
+            # logger.info(f"mapped button string: {key}")
 
         elif key in COMBO_MAP:
 
             for button in COMBO_MAP[key]:
                 gamepad.release_button(button)
-                logger.warning(f"two mapped button string: {key}")
+                # logger.info(f"two mapped button string: {key}")
 
         else:
-
+            logger.warning(f"Unmapped button string: {key}")
             return
 
         gamepad.update()
