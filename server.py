@@ -56,19 +56,18 @@ gamepad_lock = Lock()
 BUTTON_MAP = {
     "enter": vg.XUSB_BUTTON.XUSB_GAMEPAD_A,
     "engine_start": vg.XUSB_BUTTON.XUSB_GAMEPAD_B,
-    "hazard": vg.XUSB_BUTTON.XUSB_GAMEPAD_X,
+    "beacon": vg.XUSB_BUTTON.XUSB_GAMEPAD_X,
     "trailer": vg.XUSB_BUTTON.XUSB_GAMEPAD_Y,
-    "retarder_down": vg.XUSB_BUTTON.XUSB_GAMEPAD_LEFT_SHOULDER,
-    "retarder_up": vg.XUSB_BUTTON.XUSB_GAMEPAD_RIGHT_SHOULDER,
     "cruise_down": vg.XUSB_BUTTON.XUSB_GAMEPAD_LEFT_THUMB,
     "cruise_up": vg.XUSB_BUTTON.XUSB_GAMEPAD_RIGHT_THUMB,
     "left_indicator": vg.XUSB_BUTTON.XUSB_GAMEPAD_DPAD_LEFT,
     "right_indicator": vg.XUSB_BUTTON.XUSB_GAMEPAD_DPAD_RIGHT,
     "lights_high": vg.XUSB_BUTTON.XUSB_GAMEPAD_DPAD_UP,
     "lights_low": vg.XUSB_BUTTON.XUSB_GAMEPAD_DPAD_DOWN,
-    
     "menu": vg.XUSB_BUTTON.XUSB_GAMEPAD_START,
     "modifier1": vg.XUSB_BUTTON.XUSB_GAMEPAD_BACK,
+    "modifier2": vg.XUSB_BUTTON.XUSB_GAMEPAD_LEFT_SHOULDER,
+    "modifier3": vg.XUSB_BUTTON.XUSB_GAMEPAD_RIGHT_SHOULDER,
 }
 
 COMBO_MAP = {
@@ -88,14 +87,6 @@ COMBO_MAP = {
         vg.XUSB_BUTTON.XUSB_GAMEPAD_BACK,
         vg.XUSB_BUTTON.XUSB_GAMEPAD_X,
     ],
-    "lift_axle": [
-        vg.XUSB_BUTTON.XUSB_GAMEPAD_BACK,
-        vg.XUSB_BUTTON.XUSB_GAMEPAD_RIGHT_SHOULDER,
-    ],
-    "side_mirrors": [
-        vg.XUSB_BUTTON.XUSB_GAMEPAD_BACK,
-        vg.XUSB_BUTTON.XUSB_GAMEPAD_LEFT_SHOULDER,
-    ],
     "services": [
         vg.XUSB_BUTTON.XUSB_GAMEPAD_BACK,
         vg.XUSB_BUTTON.XUSB_GAMEPAD_RIGHT_THUMB,
@@ -104,29 +95,99 @@ COMBO_MAP = {
         vg.XUSB_BUTTON.XUSB_GAMEPAD_BACK,
         vg.XUSB_BUTTON.XUSB_GAMEPAD_LEFT_THUMB,
     ],
-    # "esc_quick_info": [
-    #     vg.XUSB_BUTTON.XUSB_GAMEPAD_BACK,
-    #     vg.XUSB_BUTTON.XUSB_GAMEPAD_A,
-    # ],
-    # Not working
-    "adeptive_cruise": [
-        vg.XUSB_BUTTON.XUSB_GAMEPAD_BACK,
-        vg.XUSB_BUTTON.XUSB_GAMEPAD_DPAD_UP,
+    "retarder_up": [
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_RIGHT_SHOULDER,
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_A,
     ],
-    "interior_camera": [
-        vg.XUSB_BUTTON.XUSB_GAMEPAD_BACK,
-        vg.XUSB_BUTTON.XUSB_GAMEPAD_DPAD_DOWN,
+    "retarder_down": [
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_RIGHT_SHOULDER,
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_B,
     ],
     "chasing_camera": [
-        vg.XUSB_BUTTON.XUSB_GAMEPAD_BACK,
-        vg.XUSB_BUTTON.XUSB_GAMEPAD_DPAD_LEFT,
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_RIGHT_SHOULDER,
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_X,
     ],
     "top_down_camera": [
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_RIGHT_SHOULDER,
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_Y,
+    ],
+    "interior_camera": [
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_LEFT_SHOULDER,
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_A,
+    ],
+    " ": [
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_LEFT_SHOULDER,
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_B,
+    ],
+    "side_mirrors": [
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_LEFT_SHOULDER,
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_X,
+    ],
+    "lift_axle": [
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_LEFT_SHOULDER,
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_Y,
+    ],
+    "dashbord_display_mode": [
         vg.XUSB_BUTTON.XUSB_GAMEPAD_BACK,
-        vg.XUSB_BUTTON.XUSB_GAMEPAD_DPAD_RIGHT,
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_RIGHT_SHOULDER,
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_A,
+    ],
+    "front_sus_up": [
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_BACK,
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_RIGHT_SHOULDER,
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_B,
+    ],
+    "front_sus_down": [
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_BACK,
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_RIGHT_SHOULDER,
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_X,
+    ],
+    "rear_sus_up": [
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_BACK,
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_RIGHT_SHOULDER,
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_Y,
+    ],
+    "rear_sus_down": [
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_BACK,
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_LEFT_SHOULDER,
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_A,
+    ],
+    "trailer_sus_up": [
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_BACK,
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_LEFT_SHOULDER,
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_B,
+    ],
+    "trailer_sus_down": [
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_BACK,
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_LEFT_SHOULDER,
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_X,
+    ],
+    "hazard": [
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_BACK,
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_LEFT_SHOULDER,
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_Y,
+    ],
+    " ": [
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_RIGHT_SHOULDER,
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_LEFT_SHOULDER,
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_A,
+    ],
+    " ": [
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_RIGHT_SHOULDER,
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_LEFT_SHOULDER,
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_B,
+    ],
+    " ": [
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_RIGHT_SHOULDER,
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_LEFT_SHOULDER,
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_X,
+    ],
+    "": [
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_RIGHT_SHOULDER,
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_LEFT_SHOULDER,
+        vg.XUSB_BUTTON.XUSB_GAMEPAD_Y,
     ],
 }
-
 
 # Keep track of analog states to prevent axes overriding each other
 current_axes = {"left_x": 0, "left_y": 0, "right_x": 0, "right_y": 0}
